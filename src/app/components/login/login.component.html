@@ -1,0 +1,28 @@
+<div class="login-card">
+    <div class="card-head">
+        <img src="../../../assets/svg/patient .svg" alt="">
+    </div>
+    <div class="card-body">
+        <h3>Login To Your Account</h3>
+        <form [formGroup]="LoginForm" (ngSubmit)="SubmitFrom()">
+            <div class="inp-box">
+                <input type="text" placeholder="Email address" class="form-control" formControlName="email">
+                <small *ngIf="(LoginForm.get('email')?.touched && LoginForm.get('email')?.invalid && !LoginForm.get('email')?.dirty) || (isSubmitted && LoginForm.get('email')?.invalid && !LoginForm.get('email')?.dirty)">*email required</small>
+
+                <small *ngIf="(LoginForm.get('email')?.touched && LoginForm.get('email')?.invalid && LoginForm.get('email')?.dirty) || (isSubmitted && LoginForm.get('email')?.invalid && LoginForm.get('email')?.dirty)">*Please enter valid Email</small>
+            </div>
+            <div class="inp-box">
+                <input type="text" placeholder="Password" class="form-control" formControlName="password">
+                <small *ngIf="(LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid && !LoginForm.get('password')?.dirty) || (isSubmitted && LoginForm.get('password')?.invalid && !LoginForm.get('password')?.dirty) || (LoginForm.get('password')?.touched && LoginForm.get('password')?.invalid && LoginForm.get('password')?.dirty)">*password required</small>
+            </div>
+            <div class="inp-check inp-box">
+                <div class="text-start">
+                    <input type="checkbox" (change)="checkBoxValue($event)">
+                    <p>Remember Me</p>
+                </div>
+                <small *ngIf="isSubmitted && !isChecked">*required</small>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,148 @@
+
+.list-head{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eef0f8;
+    h3{
+        display: inline-block;
+        font-size: 16px;
+        color: #132e68;
+        font-weight: 700;
+        margin: 0;
+    }
+    input{
+        width: 50%;
+        padding: 3px 10px;
+        font-size: 14px;
+
+        &:focus{
+            box-shadow: none;
+        }
+    }
+}
+
+table{
+    width: 100%;
+    thead{
+        tr{
+            background-color: #f2f3f8;
+            th{
+                padding: 8px 10px;
+            }
+            .th-1{
+                width: 22%;
+            }
+            .th-3{
+                width: 30%;
+            }
+        }
+    }
+    tbody{
+
+        tr{
+            border: 1px solid #eef0f8;
+            td{
+                padding: 8px 10px;
+                input{
+                   width: 100%;     
+                   border: none;
+                   padding: 5px 0px;
+
+                   &:hover{
+                    box-shadow: none;
+                   }
+                   &:disabled{
+                        background-color: #fff;
+                   }
+                }
+                a{
+                    display: inline-block;
+                    padding-right: 10px;
+                    cursor: pointer;
+                    position: relative;
+
+                    .img-2{
+                        position: absolute;
+                        top: 7px;
+                        left: 3px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-body{
+    p{
+        font-size: 14px;
+        color: #000;
+        font-weight: 600;
+
+        span{
+            color: #736f6f;
+            font-weight: 500;
+            text-transform: capitalize;
+        }
+    }
+}
+
+.edit-user{
+    .modal-header {
+
+        h1{
+            color: #132e68;
+        }
+    }
+    .modal-body{
+        form{
+            margin:  0 auto;
+            width: 95%;
+            .inp-box{
+                width: 45%;
+                display: inline-block;
+                margin-bottom: 15px;
+
+                label{
+                    font-size: 14px;
+                    color: #000;
+                    font-weight: 500;
+                }
+                input{
+                    font-size: 14px;
+                    padding: 4px 10px;
+                    font-weight: 500;
+                    &:focus{
+                        box-shadow: none;
+                    }
+                }
+                small{
+                    color: red;
+                    font-size: 12px;
+                    font-weight: 500;
+                    padding-top: 5px;
+                }
+            }
+            .form-btn{
+                padding-top: 20px;
+                button , a{
+                    padding: 5px 20px;
+                    color: #fff;
+                    background: linear-gradient(#2B68D0,#66349a);
+                    border-radius: 5px;
+                    font-size: 14px;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+                a{
+                    margin-left: 20px;
+                    display: inline-block;
+                    padding: 7px 20px;
+                }
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,66 @@
+<h3>
+    Pateint Detail
+</h3>
+
+<div>
+    <form [formGroup]="UserForm" (ngSubmit)="SubmitForm()" class="d-flex flex-wrap justify-content-between">
+        <div class="inp-box">
+            <label>First Name</label>
+            <input type="text" class="form-control" formControlName="firstname">
+            <small *ngIf="(UserForm.get('firstname')?.touched && UserForm.get('firstname')?.invalid && !UserForm.get('firstname')?.dirty) || (isSubmitted && UserForm.get('firstname')?.invalid && !UserForm.get('firstname')?.dirty)">*firstname required</small>
+
+            <small *ngIf="(UserForm.get('firstname')?.touched && UserForm.get('firstname')?.invalid && UserForm.get('firstname')?.dirty) || (isSubmitted && UserForm.get('firstname')?.invalid && UserForm.get('firstname')?.dirty)">*Please enter valid firstname</small>
+        </div>
+        <div class="inp-box">
+            <label>last Name</label>
+            <input type="text" class="form-control" formControlName="lastname">
+            <small *ngIf="(UserForm.get('lastname')?.touched && UserForm.get('lastname')?.invalid && !UserForm.get('lastname')?.dirty) || (isSubmitted && UserForm.get('lastname')?.invalid && !UserForm.get('lastname')?.dirty)">*lastname required</small>
+
+            <small *ngIf="(UserForm.get('lastname')?.touched && UserForm.get('lastname')?.invalid && UserForm.get('lastname')?.dirty) || (isSubmitted && UserForm.get('lastname')?.invalid && UserForm.get('lastname')?.dirty)">*Please enter valid lastname</small>
+        </div>
+        <div class="inp-box">
+            <label>Phone</label>
+            <input type="text" class="form-control" formControlName="phone">
+            <small *ngIf="(UserForm.get('phone')?.touched && UserForm.get('phone')?.invalid && !UserForm.get('phone')?.dirty) || (isSubmitted && UserForm.get('phone')?.invalid && !UserForm.get('phone')?.dirty)">*phone required</small>
+
+            <small *ngIf="(UserForm.get('phone')?.touched && UserForm.get('phone')?.invalid && UserForm.get('phone')?.dirty) || (isSubmitted && UserForm.get('phone')?.invalid && UserForm.get('phone')?.dirty)">*Please enter valid phone</small>
+        </div>
+        <div class="inp-box">
+            <label>Email</label>
+            <input type="text" class="form-control" formControlName="email">
+            <small *ngIf="(UserForm.get('email')?.touched && UserForm.get('email')?.invalid && !UserForm.get('email')?.dirty) || (isSubmitted && UserForm.get('email')?.invalid && !UserForm.get('email')?.dirty)">*email required</small>
+
+            <small *ngIf="(UserForm.get('email')?.touched && UserForm.get('email')?.invalid && UserForm.get('email')?.dirty) || (isSubmitted && UserForm.get('email')?.invalid && UserForm.get('email')?.dirty)">*Please enter valid email</small>
+        </div>
+        <div class="inp-box">
+            <label>Address Line 1</label>
+            <input type="text" class="form-control" formControlName="address1">
+            <small *ngIf="(UserForm.get('address1')?.touched && UserForm.get('address1')?.invalid) || (isSubmitted && UserForm.get('address1')?.invalid)">*address1 required</small>
+        </div>
+        <div class="inp-box">
+            <label>Address Line 2</label>
+            <input type="text" class="form-control" formControlName="address2">
+            <small *ngIf="(UserForm.get('address2')?.touched && UserForm.get('address2')?.invalid) || (isSubmitted && UserForm.get('address2')?.invalid)">*address2 required</small>
+        </div>
+        <div class="inp-box">
+            <label>City</label>
+            <input type="text" class="form-control" formControlName="city">
+            <small *ngIf="(UserForm.get('city')?.touched && UserForm.get('city')?.invalid) || (isSubmitted && UserForm.get('city')?.invalid)">*city required</small>
+        </div>
+        <div class="inp-box">
+            <label>State</label>
+            <input type="text" class="form-control" formControlName="state">
+            <small *ngIf="(UserForm.get('state')?.touched && UserForm.get('state')?.invalid) || (isSubmitted && UserForm.get('state')?.invalid)">*state required</small>
+        </div>
+        <div class="inp-box">
+            <label>Zipcode</label>
+            <input type="text" class="form-control" formControlName="zipcode">
+            <small *ngIf="(UserForm.get('zipcode')?.touched && UserForm.get('zipcode')?.invalid && !UserForm.get('zipcode')?.dirty) || (isSubmitted && UserForm.get('zipcode')?.invalid && !UserForm.get('zipcode')?.dirty)">*zipcode required</small>
+
+            <small *ngIf="(UserForm.get('zipcode')?.touched && UserForm.get('zipcode')?.invalid && UserForm.get('zipcode')?.dirty) || (isSubmitted && UserForm.get('zipcode')?.invalid && UserForm.get('zipcode')?.dirty)">*Please enter valid zipcode</small>
+        </div>
+
+        <button>Add</button>
+    </form>
+</div>
+

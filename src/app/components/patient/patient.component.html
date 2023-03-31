@@ -1,0 +1,70 @@
+<div class="top-bar">
+    <div class="col-7 col-sm-5 col-md-3">
+        <p>Patient System</p>
+        <span>
+            <img (click)="ShowSideBar()" src="../../../assets/svg/menu.svg" alt="">
+        </span>
+    </div>
+    <div class="col-5 col-sm-5 col-md-3 notification text-end">
+        <span>
+            <img src="../../../assets/svg/email_notification.svg" alt="">
+            <img class="redDott" src="../../../assets/svg/red_dot.svg" alt="">
+        </span>
+        <span>
+            <img src="../../../assets/svg/notification.svg" alt="">
+            <img class="redDott" src="../../../assets/svg/red_dot.svg" alt="">
+        </span>
+        <span class="cus-dropdown">
+            <img src="../../../assets/svg/user.svg" alt="">
+            <div class="cus-dropdown-menu">
+                <a routerLink="/home"><span>Home</span></a>
+                <a (click)="LogoutUser()"><span>Logout</span></a>
+            </div>
+        </span>
+    </div>
+</div>
+
+<main>
+    <div class="container-fluid p-0">
+        <div class="d-flex">
+            <div class="side-bar" [ngClass]="ShowSide ? 'showside' : 'hideside'">
+                <div class="user-profile">
+                    <img src="../../../assets/svg/user_profile.svg" alt="">
+                    <p>Lorem Ipsum Admin</p>
+                </div>
+                <ul>
+                    <li (click)="SetActivetab('patient')" [class.active]="ActiveTab == 'patient'">
+                        <a routerLink="/patient">
+                            <img src="../../../assets/svg/compass.svg" alt="">
+                            <span>Patient</span>
+                        </a>
+                    </li>
+                    <li (click)="SetActivetab('logout')" (click)="LogoutUser()" [class.active]="ActiveTab == 'logout'">
+                        <a>
+                            <img *ngIf="ActiveTab == 'logout'" src="../../../assets/svg/persone.svg" alt="">
+                            <img *ngIf="ActiveTab != 'logout'" src="../../../assets/svg/person-black.svg" alt="">
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="right-side" [class.pmo]="!ShowSide">
+                <div class="head-bar">
+                    <div class="title">
+                        <p>Patient Dashboard</p>
+                    </div>
+                </div>
+        
+                <div class="patient d-flex flex-wrap">
+                    <div class="patient-detail">
+                        <app-patient-detail></app-patient-detail>
+                    </div>
+                    <div class="patient-list">
+                        <app-patient-list></app-patient-list>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

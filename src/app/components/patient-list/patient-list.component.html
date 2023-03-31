@@ -1,0 +1,135 @@
+<div class="list-head">
+    <h3>
+        Pateint List
+    </h3>
+    <input type="text" [(ngModel)]="SearchText" class="form-control" placeholder="Search by name">
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th class="th-1">First Name</th>
+            <th class="th-1">Last Name</th>
+            <th class="th-3">Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of UserList | filter : SearchText">
+            <td><input disabled type="text" value="{{user.firstname}}" class="form-control"></td>
+            <td><input disabled type="text" value="{{user.lastname}}" class="form-control"></td>
+            <td><input disabled type="text" value="{{user.address1}}" class="form-control"></td>
+            <td>
+                <a (click)="UserDetail(user)" data-bs-target="#model1" data-bs-toggle="modal">
+                    <img src="../../../assets/svg/eye.svg" alt="">
+                    <img class="img-2" src="../../../assets/svg/eye (1).svg" alt="">
+                </a>
+                <a (click)="EditUser(user)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <img src="../../../assets/svg/pencile.svg" alt="">
+                </a>
+                <a (click)="DeleteUser(user.id)">
+                    <img src="../../../assets/svg/close.svg" alt="">
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade edit-user" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Update User</h1>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="EditUserForm" (ngSubmit)="UpdateUser()" class="d-flex flex-wrap justify-content-between">
+                <div class="inp-box">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" formControlName="firstname">
+                    <small *ngIf="(EditUserForm.get('firstname')?.touched && EditUserForm.get('firstname')?.invalid && EditUserForm.get('firstname')?.dirty) || (isSubmitted && EditUserForm.get('firstname')?.invalid && EditUserForm.get('firstname')?.dirty)">*Please enter valid firstname</small>
+                </div>
+                <div class="inp-box">
+                    <label>last Name</label>
+                    <input type="text" class="form-control" formControlName="lastname">
+                    <small *ngIf="(EditUserForm.get('lastname')?.touched && EditUserForm.get('lastname')?.invalid && EditUserForm.get('lastname')?.dirty) || (isSubmitted && EditUserForm.get('lastname')?.invalid && EditUserForm.get('lastname')?.dirty)">*Please enter valid lastname</small>
+                </div>
+                <div class="inp-box">
+                    <label>Phone</label>
+                    <input type="text" class="form-control" formControlName="phone">
+                    <small *ngIf="(EditUserForm.get('phone')?.touched && EditUserForm.get('phone')?.invalid && EditUserForm.get('phone')?.dirty) || (isSubmitted && EditUserForm.get('phone')?.invalid && EditUserForm.get('phone')?.dirty)">*Please enter valid phone</small>
+                </div>
+                <div class="inp-box">
+                    <label>Email</label>
+                    <input type="text" class="form-control" formControlName="email">
+                    <small *ngIf="(EditUserForm.get('email')?.touched && EditUserForm.get('email')?.invalid && EditUserForm.get('email')?.dirty) || (isSubmitted && EditUserForm.get('email')?.invalid && EditUserForm.get('email')?.dirty)">*Please enter valid email</small>
+                </div>
+                <div class="inp-box">
+                    <label>Address Line 1</label>
+                    <input type="text" class="form-control" formControlName="address1">
+                    <small *ngIf="(EditUserForm.get('address1')?.touched && EditUserForm.get('address1')?.invalid) || (isSubmitted && EditUserForm.get('address1')?.invalid)">*address1 required</small>
+                </div>
+                <div class="inp-box">
+                    <label>Address Line 2</label>
+                    <input type="text" class="form-control" formControlName="address2">
+                    <small *ngIf="(EditUserForm.get('address2')?.touched && EditUserForm.get('address2')?.invalid) || (isSubmitted && EditUserForm.get('address2')?.invalid)">*address2 required</small>
+                </div>
+                <div class="inp-box">
+                    <label>City</label>
+                    <input type="text" class="form-control" formControlName="city">
+                    <small *ngIf="(EditUserForm.get('city')?.touched && EditUserForm.get('city')?.invalid) || (isSubmitted && EditUserForm.get('city')?.invalid)">*city required</small>
+                </div>
+                <div class="inp-box">
+                    <label>State</label>
+                    <input type="text" class="form-control" formControlName="state">
+                    <small *ngIf="(EditUserForm.get('state')?.touched && EditUserForm.get('state')?.invalid) || (isSubmitted && EditUserForm.get('state')?.invalid)">*state required</small>
+                </div>
+                <div class="inp-box">
+                    <label>Zipcode</label>
+                    <input type="text" class="form-control" formControlName="zipcode">
+                    <small *ngIf="(EditUserForm.get('zipcode')?.touched && EditUserForm.get('zipcode')?.invalid && EditUserForm.get('zipcode')?.dirty) || (isSubmitted && EditUserForm.get('zipcode')?.invalid && EditUserForm.get('zipcode')?.dirty)">*Please enter valid zipcode</small>
+                </div>
+                <div class="inp-box">
+                    <input type="hidden" class="form-control" formControlName="id">
+                </div>
+                <div class="form-btn">
+                    <button [disabled]="EditUserForm.invalid" data-bs-dismiss="modal" type="submit">Update</button>
+                    <a data-bs-dismiss="modal">Cancel</a>
+                </div>
+            </form>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Understood</button>
+            </div> -->
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="modal fade" id="model1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Patient Detail</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Name : <span>{{UserObj?.firstname}}  {{UserObj?.lastname}}</span></p>
+        <p>Email : <span>{{UserObj?.email}}</span></p>
+        <p>Phone : <span>{{UserObj?.phone}}</span></p>
+        <p>Address 1 : <span>{{UserObj?.address1}}</span></p>
+        <p>Address 2 : <span>{{UserObj?.address2}}</span></p>
+        <p>City : <span>{{UserObj?.city}}</span></p>
+        <p>State : <span>{{UserObj?.state}}</span></p>
+        <p>Pincode : <span>{{UserObj?.pincode}}</span></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
